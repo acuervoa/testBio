@@ -1,5 +1,6 @@
 <?php
 
+use Biorrhythms\Biorrhythms;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,7 +22,7 @@ class BiorryhtmsTest extends TestCase
 	{
 		parent::setUp();
 		
-		$this->biorrhytms = new Biorrhythms\Biorrhythms();
+		$this->biorrhytms = new Biorrhythms();
 	}
 	
 	
@@ -69,7 +70,7 @@ class BiorryhtmsTest extends TestCase
 	 */
 	public function test_if_physical_biorrhytm_value_is_valid($time, $result)
 	{
-		$this->assertEquals($result, $this->biorrhytms->calculatePhysical($time));
+		$this->assertEquals($result, $this->biorrhytms->calculateBiorrhytms($time, Biorrhythms::PHYSICAL_TIME_PERIOD));
 	}
 
 	/**
@@ -81,7 +82,7 @@ class BiorryhtmsTest extends TestCase
 	 */
 	public function test_if_emotional_biorrhytm_value_is_valid($time, $result)
 	{
-		$this->assertEquals($result, $this->biorrhytms->calculateEmotional($time));
+		$this->assertEquals($result, $this->biorrhytms->calculateBiorrhytms($time, Biorrhythms::EMOTIONAL_TIME_PERIOD));
 	}
 
 	/**
@@ -93,7 +94,7 @@ class BiorryhtmsTest extends TestCase
 	 */
 	public function test_if_intellectual_biorrhytm_value_is_valid($time, $result)
 	{
-		$this->assertEquals($result, $this->biorrhytms->calculateIntellectual($time));
+		$this->assertEquals($result, $this->biorrhytms->calculateBiorrhytms($time, Biorrhythms::INTELLECTUAL_TIME_PERIOD));
 	}
 
 

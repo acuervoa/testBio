@@ -12,22 +12,11 @@ namespace Biorrhythms;
 class Biorrhythms
 {
 
-    /**
-     * Biorrhythms constructor.
-     */
-    public function __construct()
-    {
-    }
+    const PHYSICAL_TIME_PERIOD = 23;
+    const EMOTIONAL_TIME_PERIOD = 28;
+    const INTELLECTUAL_TIME_PERIOD = 33;
 
-    public function calculatePhysical($time){
-        return (sin((2 * M_PI * $time / 23)));
-    }
-
-    public function calculateEmotional($time){
-        return (sin((2 * M_PI * $time /28)));
-    }
-
-    public function calculateIntellectual($time){
-        return  (sin((2 * M_PI * $time/33)));
+    public function calculateBiorrhytms($time, $typeTimePeriod){
+        return (sin((2 * M_PI * $time / $typeTimePeriod)));
     }
 }
