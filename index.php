@@ -14,9 +14,8 @@ $person =  new Person();
 $person->setBirthDate(Carbon::createFromDate(1972, 9, 19, 'GMT'));
 
 $biorrhythms = new Biorrhythms();
-$biorrhythms->printChar($person);
-
-
+//$biorrhythms->printPeriodChar($person);
+$biorrhythms->printDayChar($person);
 
 echo $twig->render('index.html');
 

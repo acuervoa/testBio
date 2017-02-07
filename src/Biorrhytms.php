@@ -22,7 +22,7 @@ class Biorrhythms
     }
 
 
-    public function printChar(Person $person)
+    public function printPeriodChar(Person $person)
     {
         $diff = $person->calculateDiff();
         $lava = new Lavacharts();
@@ -34,17 +34,57 @@ class Biorrhythms
             ->addNumberColumn('Emotional')
             ->addNumberColumn('Intellectual');
 
+
         for ($i = ( $diff - 15 ); $i < ( $diff + 15 ); $i++)
         {
-            $dateOfBirth = clone $person->getBirthDate();
-        
             $dataTable->addRow([$i,
                     $this->calculateBiorrhytms($i, Biorrhythms::PHYSICAL_TIME_PERIOD),
                     $this->calculateBiorrhytms($i, Biorrhythms::EMOTIONAL_TIME_PERIOD),
                     $this->calculateBiorrhytms($i, Biorrhythms::INTELLECTUAL_TIME_PERIOD)
             ]);
         }
-        $lava->LineChart('Bio', $dataTable, ['title' => 'Bio']);
+
+        $properties = [
+            
+            'backgroundColor' => '#f1f8e9',
+            'height'            => 384,
+            'legend'            => ['position' => 'bottom'],   //Legend Options
+            'title'             => 'Bio for person',
+            'subtitle'          => 'person of interest',
+            'width'             => 512,
+            'pointSize'         => 1
+            
+        ];
+
+        $lava->LineChart('Bio', $dataTable, $properties);
         echo $lava->render('LineChart', 'Bio', 'bio-div');
+    }
+
+    public function printDayChar(Person $person)
+    {
+        $diff = $person->calculateDiff();
+
+        $lava = new Lavacharts();
+
+        $dataTable = $lava->DataTable();
+
+        $dataTable->addStringColumn('Biorrhythms')->addNumberColumn('Value');
+                    
+
+        $dataTable->addRow('Physical', [$this->calculateBiorrhytms($diff, Biorrhythms::PHYSICAL_TIME_PERIOD)]);
+        $dataTable->addRow(['Emotional', $this->calculateBiorrhytms($diff, Biorrhythms::EMOTIONAL_TIME_PERIOD)]);
+        $dataTable->addRow(['Intellectual', $this->calculateBiorrhytms($diff, Biorrhythms::INTELLECTUAL_TIME_PERIOD)]);
+        
+        $properties = [
+            'backgroundColor' => '#f1f8e9',
+            'height'            => 384,
+            'legend'            => ['position' => 'bottom'],   //Legend Options
+            'title'             => 'Bio for person',
+            'width'             => 512
+        ];
+
+        $lava->ColumnChart('BioDay', $dataTable, $properties);
+        
+        echo $lava->render('ColumnChart', 'BioDay', 'bioday-div');
     }
 }
