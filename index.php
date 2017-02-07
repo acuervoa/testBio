@@ -6,37 +6,17 @@ use Carbon\Carbon;
 use Biorrhythms\Person;
 use Biorrhythms\Biorrhythms;
 
+$loader = new Twig_Loader_Filesystem('./templates/');
+$twig = new Twig_Environment($loader);
+
+
 $person =  new Person();
 $person->setBirthDate(Carbon::createFromDate(1972, 9, 19, 'GMT'));
 
 $biorrhythms = new Biorrhythms();
-$diff = $person->calculateDiff();
-$physical = $biorrhythms->calculateBiorrhytms($diff, Biorrhythms::PHYSICAL_TIME_PERIOD);
-$emotional = $biorrhythms->calculateBiorrhytms($diff, Biorrhythms::EMOTIONAL_TIME_PERIOD);
-$intellectual = $biorrhythms->calculateBiorrhytms($diff, Biorrhythms::INTELLECTUAL_TIME_PERIOD);
+$biorrhythms->printChar($person);
 
-$lava = new Khill\Lavacharts\Lavacharts();
-$dataTable = $lava->DataTable();
-$dataTable->addNumberColumn('Now')
-    ->addNumberColumn('Physical')
-    ->addNumberColumn('Emotional')
-    ->addNumberColumn('Intellectual');
 
-for ($i = ( $diff - 15 ); $i < ( $diff + 15 ); $i++)
-{
-    $dateOfBirth = clone $person->getBirthDate();
- //   echo $i . '--' . $person->getBirthDate() . '--'  . $dateOfBirth->addDays($i) . '<br>';
-    $dataTable->addRow([$i,
-            $biorrhythms->calculateBiorrhytms($i, Biorrhythms::PHYSICAL_TIME_PERIOD),
-            $biorrhythms->calculateBiorrhytms($i, Biorrhythms::EMOTIONAL_TIME_PERIOD),
-            $biorrhythms->calculateBiorrhytms($i, Biorrhythms::INTELLECTUAL_TIME_PERIOD)
-    ]);
-}
-
-$loader = new Twig_Loader_Filesystem('./templates/');
-$twig = new Twig_Environment($loader);
-
-$lava->LineChart('Bio', $dataTable, ['title' => 'Bio']);
 
 echo $twig->render('index.html');
-echo $lava->render('LineChart', 'Bio', 'bio-div');
+
