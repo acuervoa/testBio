@@ -8,7 +8,8 @@
     "require": {
         "nesbot/carbon": "*",
         "monolog/monolog": "*",
-        "khill/lavacharts": "~3.0"
+        "khill/lavacharts": "~3.0",
+        "twig/twig": "~1.0"
     },
 
     "require-dev": {

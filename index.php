@@ -25,7 +25,7 @@ $dataTable->addNumberColumn('Now')
 for ($i = ( $diff - 15 ); $i < ( $diff + 15 ); $i++)
 {
     $dateOfBirth = clone $person->getBirthDate();
-    echo $i . '--' . $person->getBirthDate() . '--'  . $dateOfBirth->addDays($i) . '<br>';
+ //   echo $i . '--' . $person->getBirthDate() . '--'  . $dateOfBirth->addDays($i) . '<br>';
     $dataTable->addRow([$i,
             $biorrhythms->calculateBiorrhytms($i, Biorrhythms::PHYSICAL_TIME_PERIOD),
             $biorrhythms->calculateBiorrhytms($i, Biorrhythms::EMOTIONAL_TIME_PERIOD),
@@ -33,5 +33,10 @@ for ($i = ( $diff - 15 ); $i < ( $diff + 15 ); $i++)
     ]);
 }
 
+$loader = new Twig_Loader_Filesystem('./templates/');
+$twig = new Twig_Environment($loader);
+
 $lava->LineChart('Bio', $dataTable, ['title' => 'Bio']);
-echo $lava->render('LineChart', 'Bio', 'bio-div', ['width'=>512, 'height'=>384]);
+
+echo $twig->render('index.html');
+echo $lava->render('LineChart', 'Bio', 'bio-div');
