@@ -1,5 +1,4 @@
 <?php
-
 namespace Biorrhythms;
 
 use Carbon\Carbon;
@@ -39,7 +38,8 @@ class Person
 
     public function calculateDiff()
     {
-        $result = $this->getBirthDate()->diffInDays(Carbon::now());
+        $result = $this->getBirthDate()->diffInDays(Carbon::now('Europe/Madrid'));
         return $result;
     }
+
 }

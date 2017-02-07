@@ -5,14 +5,15 @@
         "optimize-autoloader": true
     },
 
-    "require" : {
+    "require": {
         "nesbot/carbon": "*",
-        "monolog/monolog": "*"
+        "monolog/monolog": "*",
+        "khill/lavacharts": "~3.0"
     },
 
     "require-dev": {
-       "phpunit/phpunit": "*",
-       "mockery/mockery": "*"
+        "phpunit/phpunit": "*",
+        "mockery/mockery": "*"
     },
     "autoload": {
         "psr-4": {
