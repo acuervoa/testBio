@@ -1,0 +1,9 @@
+- Que el calculo del bio sea a partir de una fecha y no de la diferencia
+- Funcion en bio que calcule la diff de la fecha asignada con otra // por defecto actual
+- Funcion en bio que devuelva un array con los valores de cada bio en una fila [physical, emotional, intellectual];
+- Idem arriba con key fecha -> "22-01-17" => [physical, emotional, intellectual];
+- Posibilidad de seleccionar el rango de fechas que queramos mostrar
+- Identificar el dia actual en la grafica
+- ¿Calculo de medias?
+- Fechas futuras presentes donde la media sea alta/0/baja
+- Valores de chart a traves de JSON? => http://lavacharts.com/#events
