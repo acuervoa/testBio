@@ -20,4 +20,3 @@ class Biorrhythms
         return (sin((2 * M_PI * $time / $typeTimePeriod)));
     }
 }
-

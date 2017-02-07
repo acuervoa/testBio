@@ -1,5 +1,5 @@
 <?php
-namespace Biorrhythms;
+namespace tests;
 
 use Biorrhythms\Biorrhythms;
 use PHPUnit\Framework\TestCase;
@@ -81,7 +81,8 @@ class BiorryhtmsTest extends TestCase
      */
     public function test_if_emotional_biorrhytm_value_is_valid($time, $result)
     {
-        $this->assertEquals($result, $this->biorrhytms->calculateBiorrhytms($time, Biorrhythms::EMOTIONAL_TIME_PERIOD));
+        $this->assertEquals($result, $this->biorrhytms
+            ->calculateBiorrhytms($time, Biorrhythms::EMOTIONAL_TIME_PERIOD));
     }
 
     /**
@@ -93,6 +94,7 @@ class BiorryhtmsTest extends TestCase
      */
     public function test_if_intellectual_biorrhytm_value_is_valid($time, $result)
     {
-        $this->assertEquals($result, $this->biorrhytms->calculateBiorrhytms($time, Biorrhythms::INTELLECTUAL_TIME_PERIOD));
+        $this->assertEquals($result, $this->biorrhytms
+            ->calculateBiorrhytms($time, Biorrhythms::INTELLECTUAL_TIME_PERIOD));
     }
 }

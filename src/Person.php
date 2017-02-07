@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Biorrhythms;
 
@@ -42,5 +42,4 @@ class Person
         $result = $this->getBirthDate()->diffInDays(Carbon::now());
         return $result;
     }
-
 }
